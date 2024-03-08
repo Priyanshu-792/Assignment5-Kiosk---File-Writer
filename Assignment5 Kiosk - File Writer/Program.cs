@@ -2,7 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 
-public class FileWriter
+public class BackgroundOperation
 {
     public async Task WriteMessageToFileAsync(string message)
     {
@@ -18,7 +18,7 @@ class KioskSystem
     static async Task Main(string[] args)
     {
 
-        FileWriter updateFile = new FileWriter();
+        BackgroundOperation updateFile = new BackgroundOperation();
 
         // Main loop for the Kiosk System
         while (true)
@@ -56,9 +56,8 @@ class KioskSystem
     }
 
     // Method to write message to file asynchronously
-    static async Task WriteMessage(string message, FileWriter updateFile)
+    static async Task WriteMessage(string message, BackgroundOperation updateFile)
     {
-        // Inform user about writing operation
         Console.WriteLine("Updating the tmp file..");
         await updateFile.WriteMessageToFileAsync(message);
         Console.WriteLine("Writing completed Successfully");
